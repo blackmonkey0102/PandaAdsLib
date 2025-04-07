@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'PandaAdsLib_Example' do
+  pod 'PandaAdsLib', :path => '../'
+
+  target 'PandaAdsLib_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
