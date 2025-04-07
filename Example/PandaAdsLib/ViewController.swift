@@ -1,23 +1,17 @@
-//
-//  ViewController.swift
-//  PandaAdsLib
-//
-//  Created by La Phong on 04/07/2025.
-//  Copyright (c) 2025 La Phong. All rights reserved.
-//
-
 import UIKit
+import PandaAdsLib
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let myLog = MyLog()
+        myLog.showLog()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
 
 }

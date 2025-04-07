@@ -1,0 +1,22 @@
+{
+  "name": "PandaAdsLib",
+  "version": "0.1.0",
+  "summary": "A short description of PandaAdsLib.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/La Phong/PandaAdsLib",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "La Phong": "smartbird1995@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/La Phong/PandaAdsLib.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "PandaAdsLib/Classes/**/*"
+}

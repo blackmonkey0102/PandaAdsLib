@@ -1,0 +1,16 @@
+PODS:
+  - PandaAdsLib (0.1.0)
+
+DEPENDENCIES:
+  - PandaAdsLib (from `../`)
+
+EXTERNAL SOURCES:
+  PandaAdsLib:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  PandaAdsLib: 09ecb458c2bdfc309cc2ffa0321513ea44a18521
+
+PODFILE CHECKSUM: 1efe7295ae44b96d49743da86bfabab0f2c9a8b9
+
+COCOAPODS: 1.16.2
