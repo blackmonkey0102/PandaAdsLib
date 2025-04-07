@@ -18,10 +18,10 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  Lib to request UMP, show ads interstitial, banner, native, video ads of Admob
                        DESC
 
-  s.homepage         = 'https://github.com/La Phong/PandaAdsLib'
+  s.homepage         = 'https://github.com/blackmonkey0102/PandaAdsLib'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'La Phong' => 'smartbird1995@gmail.com' }
@@ -32,10 +32,9 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '13.0'
 
   s.source_files = 'PandaAdsLib/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'PandaAdsLib' => ['PandaAdsLib/Assets/*.png']
-  # }
+  #   s.resource_bundles = {
+#     'PandaAdsLib' => ['PandaAdsLib/Assets/*.png']
+#   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
