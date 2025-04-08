@@ -1,11 +1,4 @@
-//
-//  AppDelegate.swift
-//  PandaAdsLib
-//
-//  Created by La Phong on 04/08/2025.
-//  Copyright (c) 2025 La Phong. All rights reserved.
-//
-
+import PandaAdsLib
 import UIKit
 
 @UIApplicationMain
@@ -16,6 +9,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let pandaAds = PandaAds.Builder()
+            .setAdjustToken("abcde")
+            .build()
+        pandaAds.initialize()
+        
         return true
     }
 
