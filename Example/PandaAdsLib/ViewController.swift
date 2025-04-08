@@ -5,8 +5,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let myLog = MyLog()
-        myLog.showLog()
+       
     }
 
     override func didReceiveMemoryWarning() {

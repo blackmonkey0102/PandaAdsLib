@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PandaAdsLib'
-  s.version          = '1.0.3'
+  s.version          = '1.0.4'
   s.summary          = 'Lib ads on iOS of Panda Team'
 
 # This description is used to generate tags and improve search results.
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
   s.swift_version = '5.0'
   s.ios.deployment_target = '13.0'
-
+  s.static_framework = true
   s.source_files = 'PandaAdsLib/Classes/**/*'
   #   s.resource_bundles = {
 #     'PandaAdsLib' => ['PandaAdsLib/Assets/*.png']
@@ -38,5 +38,6 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+   s.dependency 'Google-Mobile-Ads-SDK', '~> 10.7.0'
+   s.dependency 'Adjust', '~> 4.38.4'
 end
