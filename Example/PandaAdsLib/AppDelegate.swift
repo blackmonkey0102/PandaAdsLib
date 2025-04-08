@@ -1,4 +1,5 @@
 import PandaAdsLib
+import FirebaseCore
 import UIKit
 
 @UIApplicationMain
@@ -10,8 +11,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        FirebaseApp.configure()
         let pandaAds = PandaAds.Builder()
-            .setAdjustToken("abcde")
+            .setAdjustToken(IDS_Constants.ADJUST_TOKEN)
+            .setIapPurchase(IDS_Constants.ADJUST_IAP_PURCHASE)
+            .setAdImpression(IDS_Constants.ADJUST_AD_IMPRESSION)
             .build()
         pandaAds.initialize()
         

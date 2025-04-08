@@ -17,7 +17,7 @@ public class RewardedAdManager: NSObject {
     private let TIME_OUT_LOADING = 10
     private var adPlacement = ""
     
-    public func loadRewardedAd(adPlacement: String, adUnitID: String, vc:UIViewController, isShowLoading: Bool, onSuccess: (() -> Void)? = nil, onFail: ((Error) -> Void)? = nil) {
+    public func loadRewardedAd(adPlacement: String, adUnitID: String, vc:UIViewController, onSuccess: (() -> Void)? = nil, onFail: ((Error) -> Void)? = nil) {
         self.adPlacement = adPlacement
         self.onAdLoadSuccess = onSuccess
         self.onAdLoadFail = onFail
@@ -25,18 +25,6 @@ public class RewardedAdManager: NSObject {
         AnalyticEvent.adsLogEvent(.ad_reward_call_load)
         
         var isTimeout = false
-        
-        if isShowLoading {
-            showLoadingDialog(view: vc.view, timeout: TimeInterval(TIME_OUT_LOADING))
-            
-            loadingTimeoutTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(TIME_OUT_LOADING), repeats: false) { [weak self] _ in
-                    guard let self = self else { return }
-                    self.dismissLoadingDialog()
-                    isTimeout = true // Đánh dấu timeout
-                    MyHelpers.myLog(text: "Loading timeout reached")
-                    self.onAdLoadFail?(NSError(domain: "com.app.ads", code: -1, userInfo: [NSLocalizedDescriptionKey: "Loading timeout reached"]))
-                }
-        }
         
         AnalyticEvent.adsLogEvent(.ad_reward_request)
         GADRewardedAd.load(withAdUnitID: adUnitID, request: GADRequest()) { [weak self] ad, error in
@@ -72,6 +60,8 @@ public class RewardedAdManager: NSObject {
                 adRevenue?.setAdRevenuePlacement("Reward")
                 adRevenue?.setAdRevenueNetwork(responseInfo?.adNetworkClassName ?? "unknown")
                 Adjust.trackAdRevenue(adRevenue!)
+                
+                AnalyticEvent.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
             }
 
             MyHelpers.myLog(text: "Rewarded ad loaded successfully")
@@ -142,6 +132,7 @@ extension RewardedAdManager: GADFullScreenContentDelegate {
         MyHelpers.myLog(text: "Rewarded ad recorded impression")
         StatusAds.isShowingInter = true
         AnalyticEvent.adsLogEvent(.ad_reward_open)
+        AnalyticEvent.logEventAdImpressionAdjust()
     }
 
     public func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {

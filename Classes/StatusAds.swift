@@ -6,6 +6,6 @@ public class StatusAds {
     public static var isShowSettingSystem = false
     public static var isShowAoaOnScreen = true
     
-    public static let NAME_INTER_NOT_RELOAD = ["Inter_back", "Inter_style"]
-    public static let NAME_BANNER_RELOAD_VC = ["MainVC"]
+    public static let NAME_INTER_NOT_RELOAD = [""]
+    public static let NAME_BANNER_RELOAD_VC = [""]
 }

@@ -5,6 +5,8 @@ platform :ios, '13.0'
 target 'PandaAdsLib_Example' do
   pod 'PandaAdsLib', :path => '../'
 
+  pod 'Firebase/RemoteConfig', '~> 8.8.0'
+  
   target 'PandaAdsLib_Tests' do
     inherit! :search_paths
 

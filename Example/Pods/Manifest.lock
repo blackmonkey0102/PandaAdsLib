@@ -9,6 +9,11 @@ PODS:
     - FirebaseAnalytics (~> 8.8.0)
   - Firebase/CoreOnly (8.8.0):
     - FirebaseCore (= 8.8.0)
+  - Firebase/RemoteConfig (8.8.0):
+    - Firebase/CoreOnly
+    - FirebaseRemoteConfig (~> 8.8.0)
+  - FirebaseABTesting (8.15.0):
+    - FirebaseCore (~> 8.0)
   - FirebaseAnalytics (8.8.0):
     - FirebaseAnalytics/AdIdSupport (= 8.8.0)
     - FirebaseCore (~> 8.0)
@@ -41,6 +46,12 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/UserDefaults (~> 7.7)
     - PromisesObjC (< 3.0, >= 1.2)
+  - FirebaseRemoteConfig (8.8.0):
+    - FirebaseABTesting (~> 8.0)
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleUtilities/Environment (~> 7.4)
+    - "GoogleUtilities/NSData+zlib (~> 7.4)"
   - Google-Mobile-Ads-SDK (10.7.0):
     - GoogleAppMeasurement (< 11.0, >= 7.0)
     - GoogleUserMessagingPlatform (>= 1.1)
@@ -102,23 +113,26 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
-  - PandaAdsLib (1.0.5):
+  - PandaAdsLib (1.0.6):
     - Adjust (~> 4.38.4)
     - Firebase/Analytics (~> 8.8.0)
     - Google-Mobile-Ads-SDK (~> 10.7.0)
   - PromisesObjC (2.4.0)
 
 DEPENDENCIES:
+  - Firebase/RemoteConfig (~> 8.8.0)
   - PandaAdsLib (from `../`)
 
 SPEC REPOS:
   trunk:
     - Adjust
     - Firebase
+    - FirebaseABTesting
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseInstallations
+    - FirebaseRemoteConfig
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleDataTransport
@@ -134,19 +148,21 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Adjust: afda46df69f035fd216310fb85f399c40c61830a
   Firebase: 629510f1a9ddb235f3a7c5c8ceb23ba887f0f814
+  FirebaseABTesting: 10cbce8db9985ae2e3847ea44e9947dd18f94e10
   FirebaseAnalytics: 5506ea8b867d8423485a84b4cd612d279f7b0b8a
   FirebaseCore: 98b29e3828f0a53651c363937a7f7d92a19f1ba2
   FirebaseCoreDiagnostics: 92e07a649aeb66352b319d43bdd2ee3942af84cb
   FirebaseInstallations: 40bd9054049b2eae9a2c38ef1c3dd213df3605cd
+  FirebaseRemoteConfig: f6365883d7950d784ee97bcdbbf1e442d4fa6119
   Google-Mobile-Ads-SDK: 2b62c695321edc7827857ac19eaeab89b57f6862
   GoogleAppMeasurement: 5ba1164e3c844ba84272555e916d0a6d3d977e91
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
   GoogleUserMessagingPlatform: f8d0cdad3ca835406755d0a69aa634f00e76d576
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
-  PandaAdsLib: c59147c90b90727a37cc34a2321b159351c3ae15
+  PandaAdsLib: f48ac5f5fdbad4b309a15f7790c280841e12b40a
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
 
-PODFILE CHECKSUM: 29f0ea3ed10ee554621adb626310facc8e0926ab
+PODFILE CHECKSUM: 51757ca9906326fcdd247c71471bed601c8bb35d
 
 COCOAPODS: 1.16.2

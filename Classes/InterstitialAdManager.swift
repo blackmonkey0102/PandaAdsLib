@@ -17,12 +17,12 @@ public class InterstitialAdAdManager: NSObject, GADFullScreenContentDelegate{
     
     
     // Thêm delegate
-    func addDelegate(_ delegate: InterstitialAdDelegate) {
+    public func addDelegate(_ delegate: InterstitialAdDelegate) {
         delegates.add(delegate)
     }
     
     // Xóa delegate
-    func removeDelegate(_ delegate: InterstitialAdDelegate) {
+    public func removeDelegate(_ delegate: InterstitialAdDelegate) {
         delegates.remove(delegate)
     }
     
@@ -72,6 +72,8 @@ public class InterstitialAdAdManager: NSObject, GADFullScreenContentDelegate{
                     adRevenue?.setAdRevenuePlacement("Interstitial")
                     adRevenue?.setAdRevenueNetwork(responseInfo.adNetworkClassName ?? "unknown")
                     Adjust.trackAdRevenue(adRevenue!)
+                    
+                    AnalyticEvent.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
                 }
                 
                 MyHelpers.myLog(text: "Interstitial loaded successfully")
@@ -107,6 +109,7 @@ public class InterstitialAdAdManager: NSObject, GADFullScreenContentDelegate{
         MyHelpers.myLog(text: "Interstitial adDidRecordImpression")
         StatusAds.isShowingInter = true
         AnalyticEvent.adsLogEvent(.ad_inter_open)
+        AnalyticEvent.logEventAdImpressionAdjust()
     }
     
     public func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
@@ -142,14 +145,14 @@ public class InterstitialAdAdManager: NSObject, GADFullScreenContentDelegate{
     }
     
     // Gửi thông báo đến tất cả delegate
-    private func notifyAdDismissed() {
+    public func notifyAdDismissed() {
         for delegate in delegates.allObjects {
             (delegate as? InterstitialAdDelegate)?.onAdDismissed()
         }
     }
 }
 
-protocol InterstitialAdDelegate: AnyObject {
+public protocol InterstitialAdDelegate: AnyObject {
     func onAdDismissed()
 }
 

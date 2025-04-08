@@ -104,6 +104,8 @@ public class BannerAdManager: NSObject {
                 adRevenue?.setAdRevenuePlacement("Banner")
                 adRevenue?.setAdRevenueNetwork(responseInfo?.adNetworkClassName ?? "unknown")
                 Adjust.trackAdRevenue(adRevenue!)
+                
+                AnalyticEvent.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
             }
             
             // Gắn banner view vào container

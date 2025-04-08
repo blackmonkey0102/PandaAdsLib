@@ -48,6 +48,8 @@ public class InterstitialAdSplashAdManager: NSObject, GADFullScreenContentDelega
                 adRevenue?.setAdRevenuePlacement("AppOpen")
                 adRevenue?.setAdRevenueNetwork(responseInfo?.adNetworkClassName ?? "unknown")
                 Adjust.trackAdRevenue(adRevenue!)
+                
+                AnalyticEvent.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
             }
             completion(ad, nil)
         }
@@ -107,6 +109,8 @@ public class InterstitialAdSplashAdManager: NSObject, GADFullScreenContentDelega
                         adRevenue?.setAdRevenuePlacement("Interstitial")
                         adRevenue?.setAdRevenueNetwork(responseInfo.adNetworkClassName ?? "unknown")
                         Adjust.trackAdRevenue(adRevenue!)
+                        
+                        AnalyticEvent.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
                     }
                     
                     MyHelpers.myLog(text: "\(adPlacement) loaded successfully")
@@ -139,6 +143,7 @@ public class InterstitialAdSplashAdManager: NSObject, GADFullScreenContentDelega
     }
     
     public func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
+        AnalyticEvent.logEventAdImpressionAdjust()
         if isLoadAppOpen{
             MyHelpers.myLog(text: "AppOpen splash Ad adDidRecordImpression.")
             AnalyticEvent.adsLogEvent(.ad_open_open)

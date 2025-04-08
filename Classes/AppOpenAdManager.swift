@@ -55,6 +55,8 @@ public class AppOpenAdManager: NSObject {
                     adRevenue?.setAdRevenuePlacement("AppOpen")
                     adRevenue?.setAdRevenueNetwork(responseInfo?.adNetworkClassName ?? "unknown")
                     Adjust.trackAdRevenue(adRevenue!)
+                    
+                    AnalyticEvent.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
                 }
             }
         }
@@ -119,6 +121,7 @@ public class AppOpenAdManager: NSObject {
         public func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
             MyHelpers.myLog(text: "AppOpen Ad adDidRecordImpression.")
             AnalyticEvent.adsLogEvent(.ad_open_open)
+            AnalyticEvent.logEventAdImpressionAdjust()
         }
         
         public func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {

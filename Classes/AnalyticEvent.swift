@@ -1,7 +1,19 @@
 import FirebaseAnalytics
 import Foundation
+import Adjust
 
 public class AnalyticEvent {
+    
+    public static func logEventAdImpressionAdjust(){
+        guard let event = ADJEvent(eventToken: PandaAds.shared.adjustAdImpression) else { return }
+        Adjust.trackEvent(event)
+    }
+    
+    public static func logEventPurchaseAdjust(amount: Double, currency: String){
+        guard let event = ADJEvent(eventToken: PandaAds.shared.adjustIapPurchase) else { return }
+        event.setRevenue(amount, currency: currency)
+        Adjust.trackEvent(event)
+    }
     
     public static func adsLogEvent(_ key: AnalyticEventKeyAds, parameters: [String: Any]? = nil){
            print("Event ads logged: \(key.rawValue), Parameters: \(parameters ?? [:])")

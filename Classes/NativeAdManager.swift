@@ -120,6 +120,8 @@ public class NativeAdManager: NSObject {
                 adRevenue?.setAdRevenuePlacement("Native")
                 adRevenue?.setAdRevenueNetwork(responseInfo.adNetworkClassName ?? "unknown")
                 Adjust.trackAdRevenue(adRevenue!)
+                
+                AnalyticEvent.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
             }
             
             AnalyticEvent.adsLogEvent(.ad_native_loaded)
@@ -157,6 +159,7 @@ public class NativeAdManager: NSObject {
         public func nativeAdDidRecordImpression(_ nativeAd: GADNativeAd) {
             MyHelpers.myLog(text: "Native ad did record impression")
             AnalyticEvent.adsLogEvent(.ad_native_open)
+            AnalyticEvent.logEventAdImpressionAdjust()
         }
 
         public func nativeAdDidRecordClick(_ nativeAd: GADNativeAd) {

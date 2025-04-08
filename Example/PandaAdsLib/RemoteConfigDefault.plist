@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>enable_ump</key>
+	<true/>
+	<key>language_reopen</key>
+	<false/>
+	<key>in_app_purchase_week</key>
+	<true/>
+	<key>in_app_purchase_month</key>
+	<true/>
+	<key>in_app_purchase_lifetime</key>
+	<true/>
+	<key>interval_between_interstitial</key>
+	<integer>25</integer>
+	<key>Inter_splash</key>
+	<true/>
+	<key>AppOpen_resume</key>
+	<true/>
+	<key>Native_language</key>
+	<true/>
+	<key>Inter_home</key>
+	<true/>
+	<key>Inter_back</key>
+	<true/>
+	<key>Inter_onboarding</key>
+	<true/>
+	<key>Banner_all</key>
+	<true/>
+	<key>Banner_splash</key>
+	<true/>
+	<key>Native_onboarding</key>
+	<true/>
+</dict>
+</plist>

@@ -14,6 +14,10 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		BAD95C2B2DA5765000406234 /* IDS_Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD95C2A2DA5764500406234 /* IDS_Constants.swift */; };
+		BAD95C342DA57E6900406234 /* RemoteConfigDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = BAD95C332DA57E6900406234 /* RemoteConfigDefault.plist */; };
+		BAD95C362DA57E7C00406234 /* RemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD95C352DA57E7C00406234 /* RemoteConfigManager.swift */; };
+		BAD95C382DA584F300406234 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BAD95C372DA584F300406234 /* GoogleService-Info.plist */; };
 		D48BD12CA25538561A6919D1 /* Pods_PandaAdsLib_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE515D6597140102C9CD3D24 /* Pods_PandaAdsLib_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +47,10 @@
 		607FACE51AFB9204008FA782 /* PandaAdsLib_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PandaAdsLib_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		BAD95C2A2DA5764500406234 /* IDS_Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDS_Constants.swift; sourceTree = "<group>"; };
+		BAD95C332DA57E6900406234 /* RemoteConfigDefault.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefault.plist; sourceTree = "<group>"; };
+		BAD95C352DA57E7C00406234 /* RemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigManager.swift; sourceTree = "<group>"; };
+		BAD95C372DA584F300406234 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C35FBE67597CF72F1834DFCF /* Pods-PandaAdsLib_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PandaAdsLib_Tests.release.xcconfig"; path = "Target Support Files/Pods-PandaAdsLib_Tests/Pods-PandaAdsLib_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CAC25BD5124C6E1E70910D97 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		EE515D6597140102C9CD3D24 /* Pods_PandaAdsLib_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PandaAdsLib_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +121,10 @@
 		607FACD21AFB9204008FA782 /* Example for PandaAdsLib */ = {
 			isa = PBXGroup;
 			children = (
+				BAD95C372DA584F300406234 /* GoogleService-Info.plist */,
+				BAD95C332DA57E6900406234 /* RemoteConfigDefault.plist */,
+				BAD95C352DA57E7C00406234 /* RemoteConfigManager.swift */,
+				BAD95C2A2DA5764500406234 /* IDS_Constants.swift */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -251,6 +263,8 @@
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				BAD95C382DA584F300406234 /* GoogleService-Info.plist in Resources */,
+				BAD95C342DA57E6900406234 /* RemoteConfigDefault.plist in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,9 +309,11 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PandaAdsLib_Example/Pods-PandaAdsLib_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Adjust/Adjust.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
@@ -306,9 +322,11 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Adjust.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseABTesting.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
@@ -370,6 +388,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAD95C2B2DA5765000406234 /* IDS_Constants.swift in Sources */,
+				BAD95C362DA57E7C00406234 /* RemoteConfigManager.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
@@ -522,7 +542,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.panda.adslib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -539,7 +559,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.panda.adslib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;

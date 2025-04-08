@@ -1,10 +1,10 @@
 import UserMessagingPlatform
 import GoogleMobileAds
 
-class ConsentManager {
-    static let shared = ConsentManager()
+public class ConsentManager {
+    public static let shared = ConsentManager()
     
-    private var consentForm: ConsentForm?
+    public var consentForm: ConsentForm?
     
     public func checkAndRequestConsent(isRelease: Bool, completion: @escaping (Bool) -> Void) {
         let parameters = RequestParameters()
