@@ -1,11 +1,4 @@
-//
-//  ViewController.swift
-//  PandaAdsLib
-//
-//  Created by La Phong on 04/08/2025.
-//  Copyright (c) 2025 La Phong. All rights reserved.
-//
-
+import PandaAdsLib
 import UIKit
 
 class ViewController: UIViewController {
@@ -13,6 +6,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     override func didReceiveMemoryWarning() {

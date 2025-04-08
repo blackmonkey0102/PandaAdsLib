@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PandaAdsLib'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of PandaAdsLib.'
+  s.version          = '1.0.4'
+  s.summary          = 'Lib ads on iOS of Panda Team'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,25 +18,31 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  Lib to request UMP, show ads interstitial, banner, native, video ads of Admob
                        DESC
 
-  s.homepage         = 'https://github.com/La Phong/PandaAdsLib'
+  s.homepage         = 'https://github.com/blackmonkey0102/PandaAdsLib'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'La Phong' => 'smartbird1995@gmail.com' }
-  s.source           = { :git => 'https://github.com/La Phong/PandaAdsLib.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/blackmonkey0102/PandaAdsLib.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
-
-  s.source_files = 'PandaAdsLib/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'PandaAdsLib' => ['PandaAdsLib/Assets/*.png']
-  # }
+  s.swift_version = '5.0'
+  s.ios.deployment_target = '13.0'
+  s.pod_target_xcconfig = {
+    'IPHONEOS_DEPLOYMENT_TARGET' => '13.0'
+  }
+  s.static_framework = true
+  s.source_files = 'Classes/**/*.{swift,h,m}'
+  s.resources = ['Classes/**/*.xib']
+  #   s.resource_bundles = {
+#     'PandaAdsLib' => ['PandaAdsLib/Assets/*.png']
+#   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+   s.dependency 'Google-Mobile-Ads-SDK', '~> 10.7.0'
+   s.dependency 'Adjust', '~> 4.38.4'
+#   s.dependency 'JGProgressHUD'
 end
