@@ -238,7 +238,7 @@ class HomeVIewController: UIViewController, InterstitialAdDelegate{
     }
 ```
 ### 6. Rewarded Ads
-##### Load và show Reward, có thể tách riêng
+##### Load và show Reward
 ```ruby
     private func loadReward(){
         RewardedAdManager.shared.loadRewardedAd(adPlacement: "Reward_ads", adUnitID: IDS_Constants.Reward_ads, vc: self, onSuccess: {
