@@ -32,7 +32,6 @@ class HomeVIewController: UIViewController, InterstitialAdDelegate{
         }) { error in
             print("myLog: Failed to load rewarded ad: \(error.localizedDescription)")
         }
-       
     }
     
     private func loadInterAd(){

@@ -40,32 +40,21 @@ class SplashViewController: UIViewController{
             if RemoteConfigManager.valueBoolean(forKey: RemoteConfigManager.enable_ump){
                 ConsentManager.shared.checkAndRequestConsent(isRelease: true, completion: {consentGranted in
                     DispatchQueue.main.async {
-                        if consentGranted {
-                            self.startSplash()
-                        } else {
-                            self.startSplash()
-                        }
+                        self.requestAppTracking()
                     }
                 })
             }else{
                 DispatchQueue.main.async {
-                    self.startSplash()
+                    self.requestAppTracking()
                 }
             }
         })
     }
-    
-    private func startSplash(){
-        // don't show AOA
-        StatusAds.isShowAoaOnScreen = false
-       
-        requestAppTracking()
-      
-    }
-    
+   
     func requestAppTracking() {
+        StatusAds.isShowAoaOnScreen = false // đặt là false thì không show AOA cho đến khi trạng thái đặt lại là true
         if #available(iOS 14, *) {
-            StatusAds.isShowSettingSystem = true
+            StatusAds.isShowSettingSystem = true // không show AOA sau khi đóng các popup xin quyền của hệ thống
             ATTrackingManager.requestTrackingAuthorization { status in
                 DispatchQueue.main.async {
                     self.requestAds()
@@ -105,7 +94,7 @@ class SplashViewController: UIViewController{
     }
 
     private func navigateToNextScreen(){
-        StatusAds.isShowAoaOnScreen = true
+        StatusAds.isShowAoaOnScreen = true //cho phép show AOA khi quay trở lại App
         StatusAds.isShowSettingSystem = false
         
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in

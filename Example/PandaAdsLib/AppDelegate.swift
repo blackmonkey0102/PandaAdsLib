@@ -14,12 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         let pandaAds = PandaAds.Builder()
-            .setAdjustToken(IDS_Constants.ADJUST_TOKEN)
-            .setIapPurchase(IDS_Constants.ADJUST_IAP_PURCHASE)
-            .setAdImpression(IDS_Constants.ADJUST_AD_IMPRESSION)
+            .setAdjustToken(IDS_Constants.ADJUST_TOKEN)             // Adjust token
+            //.setIapPurchase(IDS_Constants.ADJUST_IAP_PURCHASE)      // Adjust custom event
+            //.setAdImpression(IDS_Constants.ADJUST_AD_IMPRESSION)    // Adjust custom event
             .build()
         pandaAds.initialize()
         
+        //MyUnifiedNativeAdViewSmall, MyUnifiedNativeAdView là 2 file xib chứa layout của native ads large và small, Lấy nó ở trong thư mục Example
         PandaAds.shared.nativeAdViewProvider = { isSmall in
             let nibName = isSmall ? "MyUnifiedNativeAdViewSmall" : "MyUnifiedNativeAdView"
             return Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)?.first as? GADNativeAdView
