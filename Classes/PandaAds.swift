@@ -11,6 +11,9 @@ public class PandaAds: NSObject{
     public var adjustAdImpression: String = ""
     public var intervalBetweenInterstitial: Int = 20
     
+    /// Closure để app truyền custom NativeAdView từ xib
+    public var nativeAdViewProvider: ((_ isSmall: Bool) -> GADNativeAdView?)?
+    
     public func initialize() {
         // Setup Adjust
         if !adjustToken.isEmpty{

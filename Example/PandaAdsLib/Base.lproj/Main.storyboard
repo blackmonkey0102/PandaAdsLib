@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hZs-Do-wqb">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--HomeV Iew Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="PandaAdsLib_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVIewController" id="vXZ-lx-hvc" customClass="HomeVIewController" customModule="PandaAdsLib_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -44,7 +44,7 @@
                                             <action selector="btShowRewardAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="PVT-fa-20L"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chh-cZ-xWI" userLabel="ViewAd" customClass="BaseView" customModule="Screen_Mirroring" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chh-cZ-xWI" userLabel="ViewAd" customClass="BaseView" customModule="PandaAdsLib_Example" customModuleProvider="target">
                                         <rect key="frame" x="10" y="277" width="355" height="300"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="bIv-mG-pqr">
@@ -196,12 +196,54 @@
                     </view>
                     <connections>
                         <outlet property="viewAD" destination="OZO-fb-RAk" id="P00-dw-pzX"/>
-                        <outlet property="viewADNative" destination="chh-cZ-xWI" id="0MA-Ql-Xyc"/>
+                        <outlet property="viewADNativeLarge" destination="chh-cZ-xWI" id="K1Z-6v-557"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-119" y="-69"/>
+            <point key="canvasLocation" x="-284" y="-71"/>
+        </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="H6K-O2-Nws">
+            <objects>
+                <viewController storyboardIdentifier="SplashViewController" id="hZs-Do-wqb" customClass="SplashViewController" customModule="PandaAdsLib_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Uyj-AT-Vth"/>
+                        <viewControllerLayoutGuide type="bottom" id="ibW-Wr-Gof"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7jV-UP-UC7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDa-u2-8q2">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPLASH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSz-JQ-NO6">
+                                        <rect key="frame" x="60" y="281.5" width="255" height="84"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="70"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <constraints>
+                                    <constraint firstItem="lSz-JQ-NO6" firstAttribute="centerY" secondItem="fDa-u2-8q2" secondAttribute="centerY" id="Ojn-a8-Inh"/>
+                                    <constraint firstItem="lSz-JQ-NO6" firstAttribute="centerX" secondItem="fDa-u2-8q2" secondAttribute="centerX" id="W5R-cT-8iH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fDa-u2-8q2" firstAttribute="leading" secondItem="7jV-UP-UC7" secondAttribute="leading" id="CA3-2o-dhh"/>
+                            <constraint firstItem="ibW-Wr-Gof" firstAttribute="top" secondItem="fDa-u2-8q2" secondAttribute="bottom" id="H3k-wD-ki0"/>
+                            <constraint firstAttribute="trailing" secondItem="fDa-u2-8q2" secondAttribute="trailing" id="PAm-IE-jJl"/>
+                            <constraint firstItem="fDa-u2-8q2" firstAttribute="top" secondItem="Uyj-AT-Vth" secondAttribute="bottom" id="zxt-n5-AXb"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fUi-dQ-9gf" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-924" y="-70"/>
         </scene>
     </scenes>
     <resources>
@@ -212,10 +254,13 @@
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

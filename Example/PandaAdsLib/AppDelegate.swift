@@ -1,6 +1,7 @@
 import PandaAdsLib
 import FirebaseCore
 import UIKit
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .setAdImpression(IDS_Constants.ADJUST_AD_IMPRESSION)
             .build()
         pandaAds.initialize()
+        
+        PandaAds.shared.nativeAdViewProvider = { isSmall in
+            let nibName = isSmall ? "MyUnifiedNativeAdViewSmall" : "MyUnifiedNativeAdView"
+            return Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)?.first as? GADNativeAdView
+        }
         
         return true
     }

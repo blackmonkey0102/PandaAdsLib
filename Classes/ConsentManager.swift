@@ -31,10 +31,10 @@ public class ConsentManager {
             
             // If consent is required, load and show the form
             if ConsentInformation.shared.formStatus == .available {
-                MyHelpers.myLog(text: "Consent form status 1 : \(ConsentInformation.shared.formStatus)")
+                //MyHelpers.myLog(text: "Consent form status 1 : \(ConsentInformation.shared.formStatus)")
                 self?.loadAndShowForm(completion: completion)
             } else {
-                MyHelpers.myLog(text: "Consent form status 2: \(ConsentInformation.shared.formStatus)")
+                //MyHelpers.myLog(text: "Consent form status 2: \(ConsentInformation.shared.formStatus)")
                 // Consent is not required or already collected
                 completion(consentStatus == .obtained || consentStatus == .notRequired)
             }

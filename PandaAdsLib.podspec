@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PandaAdsLib'
-  s.version          = '1.0.8'
+  s.version          = '1.0.9'
   s.summary          = 'Lib ads on iOS of Panda Team'
 
 # This description is used to generate tags and improve search results.
@@ -45,5 +45,4 @@ Pod::Spec.new do |s|
    s.dependency 'Google-Mobile-Ads-SDK', '~> 10.7.0'
    s.dependency 'Adjust', '~> 4.38.4'
    s.dependency 'Firebase/Analytics', '~> 8.8.0'
-#   s.dependency 'JGProgressHUD'
 end

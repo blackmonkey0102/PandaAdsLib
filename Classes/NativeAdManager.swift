@@ -52,8 +52,15 @@ public class NativeAdManager: NSObject {
            
             AnalyticEvent.adsLogEvent(.ad_native_call_show)
             
-            guard let nativeAdView = Bundle.main.loadNibNamed(isSmall ? "UnifiedNativeAdViewSmall" : "UnifiedNativeAdView", owner: nil, options: nil)?.first as? GADNativeAdView else {
-                fatalError("NativeAdView nib file not found")
+            let nativeAdView: GADNativeAdView
+            if let customView = PandaAds.shared.nativeAdViewProvider?(isSmall) {
+                nativeAdView = customView
+            } else {
+                let nibName = isSmall ? "UnifiedNativeAdViewSmall" : "UnifiedNativeAdView"
+                guard let fallbackView = Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)?.first as? GADNativeAdView else {
+                    fatalError("❌ Không tìm thấy XIB fallback: \(nibName)")
+                }
+                nativeAdView = fallbackView
             }
 
             // Gắn dữ liệu từ nativeAd vào các thành phần của nativeAdView

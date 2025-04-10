@@ -9,15 +9,19 @@
 /* Begin PBXBuildFile section */
 		318D91BE92FB04B1CE66C2F3 /* Pods_PandaAdsLib_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FD381D8EC2717F101BFCB2 /* Pods_PandaAdsLib_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
+		607FACD81AFB9204008FA782 /* HomeVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* HomeVIewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		BAABB2F52DA6056900D60886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAABB2F42DA6056800D60886 /* SceneDelegate.swift */; };
 		BAD95C2B2DA5765000406234 /* IDS_Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD95C2A2DA5764500406234 /* IDS_Constants.swift */; };
 		BAD95C342DA57E6900406234 /* RemoteConfigDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = BAD95C332DA57E6900406234 /* RemoteConfigDefault.plist */; };
 		BAD95C362DA57E7C00406234 /* RemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD95C352DA57E7C00406234 /* RemoteConfigManager.swift */; };
 		BAD95C382DA584F300406234 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BAD95C372DA584F300406234 /* GoogleService-Info.plist */; };
+		BAE325022DA7BDA1002EAB90 /* MyUnifiedNativeAdViewSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAE325012DA7BDA1002EAB90 /* MyUnifiedNativeAdViewSmall.xib */; };
+		BAE325032DA7BDA1002EAB90 /* MyUnifiedNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAE325002DA7BDA1002EAB90 /* MyUnifiedNativeAdView.xib */; };
+		BAE325052DA7D8A5002EAB90 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE325042DA7D8A5002EAB90 /* SplashViewController.swift */; };
 		D48BD12CA25538561A6919D1 /* Pods_PandaAdsLib_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE515D6597140102C9CD3D24 /* Pods_PandaAdsLib_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,24 +37,28 @@
 
 /* Begin PBXFileReference section */
 		0EF07A5D4295DC50EC713D69 /* Pods-PandaAdsLib_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PandaAdsLib_Tests.debug.xcconfig"; path = "Target Support Files/Pods-PandaAdsLib_Tests/Pods-PandaAdsLib_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		33A7A61366316F7BBC68CECC /* PandaAdsLib.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PandaAdsLib.podspec; path = ../PandaAdsLib.podspec; sourceTree = "<group>"; };
+		33A7A61366316F7BBC68CECC /* PandaAdsLib.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PandaAdsLib.podspec; path = ../PandaAdsLib.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		37FD381D8EC2717F101BFCB2 /* Pods_PandaAdsLib_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PandaAdsLib_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A30D0501296904FEC167021 /* Pods-PandaAdsLib_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PandaAdsLib_Example.debug.xcconfig"; path = "Target Support Files/Pods-PandaAdsLib_Example/Pods-PandaAdsLib_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		5F270D9EA109DA88023493CF /* Pods-PandaAdsLib_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PandaAdsLib_Example.release.xcconfig"; path = "Target Support Files/Pods-PandaAdsLib_Example/Pods-PandaAdsLib_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* PandaAdsLib_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PandaAdsLib_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		607FACD71AFB9204008FA782 /* HomeVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVIewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* PandaAdsLib_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PandaAdsLib_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		BAABB2F42DA6056800D60886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BAD95C2A2DA5764500406234 /* IDS_Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDS_Constants.swift; sourceTree = "<group>"; };
 		BAD95C332DA57E6900406234 /* RemoteConfigDefault.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefault.plist; sourceTree = "<group>"; };
 		BAD95C352DA57E7C00406234 /* RemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigManager.swift; sourceTree = "<group>"; };
 		BAD95C372DA584F300406234 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BAE325002DA7BDA1002EAB90 /* MyUnifiedNativeAdView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyUnifiedNativeAdView.xib; sourceTree = "<group>"; };
+		BAE325012DA7BDA1002EAB90 /* MyUnifiedNativeAdViewSmall.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyUnifiedNativeAdViewSmall.xib; sourceTree = "<group>"; };
+		BAE325042DA7D8A5002EAB90 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		C35FBE67597CF72F1834DFCF /* Pods-PandaAdsLib_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PandaAdsLib_Tests.release.xcconfig"; path = "Target Support Files/Pods-PandaAdsLib_Tests/Pods-PandaAdsLib_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CAC25BD5124C6E1E70910D97 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		EE515D6597140102C9CD3D24 /* Pods_PandaAdsLib_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PandaAdsLib_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,7 +134,11 @@
 				BAD95C352DA57E7C00406234 /* RemoteConfigManager.swift */,
 				BAD95C2A2DA5764500406234 /* IDS_Constants.swift */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				BAABB2F42DA6056800D60886 /* SceneDelegate.swift */,
+				607FACD71AFB9204008FA782 /* HomeVIewController.swift */,
+				BAE325042DA7D8A5002EAB90 /* SplashViewController.swift */,
+				BAE325002DA7BDA1002EAB90 /* MyUnifiedNativeAdView.xib */,
+				BAE325012DA7BDA1002EAB90 /* MyUnifiedNativeAdViewSmall.xib */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -263,6 +275,8 @@
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				BAE325022DA7BDA1002EAB90 /* MyUnifiedNativeAdViewSmall.xib in Resources */,
+				BAE325032DA7BDA1002EAB90 /* MyUnifiedNativeAdView.xib in Resources */,
 				BAD95C382DA584F300406234 /* GoogleService-Info.plist in Resources */,
 				BAD95C342DA57E6900406234 /* RemoteConfigDefault.plist in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -388,10 +402,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAABB2F52DA6056900D60886 /* SceneDelegate.swift in Sources */,
 				BAD95C2B2DA5765000406234 /* IDS_Constants.swift in Sources */,
 				BAD95C362DA57E7C00406234 /* RemoteConfigManager.swift in Sources */,
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				607FACD81AFB9204008FA782 /* HomeVIewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				BAE325052DA7D8A5002EAB90 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

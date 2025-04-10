@@ -1,7 +1,7 @@
 import PandaAdsLib
 import UIKit
 
-class ViewController: UIViewController, InterstitialAdDelegate{
+class HomeVIewController: UIViewController, InterstitialAdDelegate{
     func onAdDismissed() {
         print("myLog: Inter dismiss")
     }
@@ -9,42 +9,20 @@ class ViewController: UIViewController, InterstitialAdDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        RemoteConfigManager.configure(exprationDuration: 0, completion: {isSuccess in
-            
-            // set time interval between interstitial
-            PandaAds.shared.setInterval(Int(RemoteConfigManager.valueNumber(forKey: RemoteConfigManager.interval_between_interstitial)))
-            
-            if RemoteConfigManager.valueBoolean(forKey: RemoteConfigManager.enable_ump){
-                ConsentManager.shared.checkAndRequestConsent(isRelease: true, completion: {consentGranted in
-                    DispatchQueue.main.async {
-                        if consentGranted {
-                            MyHelpers.myLog(text: "Consent granted, proceed with ads")
-                            // Initialize Google Mobile Ads SDK or load ads
-                            self.initView()
-                        } else {
-                            MyHelpers.myLog(text: "Consent not granted or required")
-                            self.initView()
-                        }
-                    }
-                })
-            }else{
-                DispatchQueue.main.async {
-                    self.initView()
-                }
-            }
-        })
-        
+        initView()
     }
     
     private func initView(){
-        print("myLog: \(PandaAds.shared.intervalBetweenInterstitial)")
         loadBannerAd()
         
         loadNativeAd()
         
         loadInterAd()
+      
     }
     
+    
+  
     private func loadReward(){
         RewardedAdManager.shared.loadRewardedAd(adPlacement: "Reward_ads", adUnitID: IDS_Constants.Reward_ads, vc: self, onSuccess: {
             print("myLog: Rewarded ad loaded successfully")
@@ -59,12 +37,12 @@ class ViewController: UIViewController, InterstitialAdDelegate{
     
     private func loadInterAd(){
         InterstitialAdAdManager.shared.addDelegate(self)
-        InterstitialAdAdManager.shared.loadInterAd(adPlacement: "Inter_home", idInter: IDS_Constants.Inter_home, interName: "Inter_home", canShowAds: RemoteConfigManager.valueBoolean(forKey: RemoteConfigManager.Inter_home), completion: {interAd, error in
+        InterstitialAdAdManager.shared.loadInterAd(adPlacement: "Inter_home", idInter: IDS_Constants.Inter_home, interName: "Inter_home", canShowAds: true, completion: {interAd, error in
         })
     }
     
-    @IBOutlet weak var viewADNative: UIView!
-    func loadNativeAd() {
+    @IBOutlet weak var viewADNativeLarge: UIView!
+    private func loadNativeAd(){
         NativeAdManager.shared.onNativeAdLoadSuccess = { (nativeAd, adPlacement) in
             print("myLog: Native Ad Loaded Successfully: \(nativeAd.headline ?? "")")
         }
@@ -74,11 +52,23 @@ class ViewController: UIViewController, InterstitialAdDelegate{
         }
         
         NativeAdManager.shared.loadNativeAd(
-            adPlacement: "Native_language",
-            adUnitID: IDS_Constants.Native_language,
-            canShowAds: RemoteConfigManager.valueBoolean(forKey: RemoteConfigManager.Native_language),
+            adPlacement: "Native_language_2F",
+            adUnitID: IDS_Constants.Native_language_2F,
+            canShowAds: true,
             isSmall: false,
-            containerView: viewADNative,
+            containerView: viewADNativeLarge,
+            viewController: self
+        )
+    }
+    
+    @IBOutlet weak var viewADNativeSmall: UIView!
+    func loadNativeSmallAd() {
+        NativeAdManager.shared.loadNativeAd(
+            adPlacement: "Native_permission",
+            adUnitID: IDS_Constants.Native_permission,
+            canShowAds: true,
+            isSmall: true,
+            containerView: viewADNativeSmall,
             viewController: self
         )
     }
@@ -115,4 +105,3 @@ class ViewController: UIViewController, InterstitialAdDelegate{
         InterstitialAdAdManager.shared.removeDelegate(self)
     }
 }
-

@@ -1,8 +1,8 @@
 import Foundation
 import StoreKit
 
-class SubscriptionManager {
-    static let shared = SubscriptionManager()
+public class SubscriptionManager {
+    public static let shared = SubscriptionManager()
     
     public func checkPurchaseStatus(idSharedSecretInappPurchase: String, lifetimeProductId: String?, completion: @escaping ((Bool, Bool, String)?) -> Void) {
         guard let receiptURL = Bundle.main.appStoreReceiptURL,

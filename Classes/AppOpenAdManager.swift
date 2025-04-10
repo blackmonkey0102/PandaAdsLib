@@ -72,6 +72,7 @@ public class AppOpenAdManager: NSObject {
             }
             
             if !StatusAds.isShowAoaOnScreen{
+                MyHelpers.myLog(text: "not show AOA on Screen")
                 return
             }
             
