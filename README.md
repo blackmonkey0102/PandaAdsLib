@@ -17,6 +17,17 @@ PandaAdsLib is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
+pod 'Firebase/Analytics', '~> 8.8.0'
+pod 'Firebase/Crashlytics', '~> 8.8.0'
+pod 'Firebase/RemoteConfig', '~> 8.8.0'
+pod 'Firebase/Messaging', '~> 8.8.0'
+
+pod 'GoogleMobileAdsMediationFacebook'
+pod 'GoogleMobileAdsMediationVungle'
+pod 'GoogleMobileAdsMediationMintegral', '~> 7.4.1.0'
+pod 'GoogleMobileAdsMediationAppLovin', '~> 11.9.0.0'
+pod 'GoogleMobileAdsMediationPangle', '~> 5.2.1.1.0'
+
 pod 'PandaAdsLib'
 ```
 
