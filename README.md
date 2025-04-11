@@ -39,7 +39,7 @@ pod 'GoogleMobileAdsMediationPangle', '~> 5.2.1.1.0'
 pod 'PandaAdsLib'
 ```
 ## Sử dụng thư viện
-##### Các khái niệm thường sử dụng
+##### Các param thường sử dụng khi load ads
 `adPlacement`: Tên của id ads, ví dụ Inter_Splash = "ca-app-pub-3940256099942544/4411468910" thì giá trị của `adPlacement` là `Inter_Splash`
 
 `canShowAds`: cho phép load ads hay không, thường kết hợp giữa RemoteConfig vị trí ads và RemoveAds khi mua Inapp Purchase. Ví dụ `canShowAds: RemoteConfigManager.valueBoolean(forKey: RemoteConfigManager.Inter_splash) && !MySettings.isRemoveAds()`
