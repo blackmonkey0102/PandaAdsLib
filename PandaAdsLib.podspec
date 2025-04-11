@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PandaAdsLib'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = 'Lib ads on iOS of Panda Team'
 
 # This description is used to generate tags and improve search results.
@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
   }
   s.static_framework = true
   s.source_files = 'Classes/**/*.{swift,h,m}'
-  s.resources = ['Classes/**/*.xib']a
+  s.resources = ['Classes/**/*.xib']
   #   s.resource_bundles = {
 #     'PandaAdsLib' => ['PandaAdsLib/Assets/*.png']
 #   }
