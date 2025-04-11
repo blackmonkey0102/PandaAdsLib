@@ -59,9 +59,11 @@ pod 'PandaAdsLib'
             .build()
         pandaAds.initialize()
         
-        // MyUnifiedNativeAdViewSmall, MyUnifiedNativeAdView là 2 file xib chứa layout của native ads large và small, Lấy nó ở trong thư mục Example, sau đó custom giao diện, màu sắc tùy theo design Native Ads
-        PandaAds.shared.nativeAdViewProvider = { isSmall in
-            let nibName = isSmall ? "MyUnifiedNativeAdViewSmall" : "MyUnifiedNativeAdView"
+        // MyUnifiedNativeAdViewSmall, MyUnifiedNativeAdView, MyUnifiedNativeAdViewSmallDarkMode, MyUnifiedNativeAdViewDarkMode là 4 file xib chứa layout của native ads large và small, Lấy nó ở trong thư mục Example, sau đó custom giao diện, màu sắc tùy theo design Native Ads
+        PandaAds.shared.nativeAdViewProvider = { isSmall, isLightMode in
+            let nibName = isSmall
+                ? (isLightMode ? "MyUnifiedNativeAdViewSmall" : "MyUnifiedNativeAdViewSmallDarkMode")
+                : (isLightMode ? "MyUnifiedNativeAdView" : "MyUnifiedNativeAdViewDarkMode")
             return Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)?.first as? GADNativeAdView
         }
         return true
@@ -216,6 +218,7 @@ extension UIApplication {
             adUnitID: IDS_Constants.Native_language_2F,
             canShowAds: true,
             isSmall: false, // true nếu muốn show native small
+            isLightMode: false, // mặc định là true
             containerView: viewADNativeLarge,
             viewController: self
         )
