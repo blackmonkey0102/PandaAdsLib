@@ -46,6 +46,8 @@ pod 'PandaAdsLib'
 
 `StatusAds.isShowAoaOnScreen`: Cho phép show AppOpen Ads hay không. Ví dụ `StatusAds.isShowAoaOnScreen = false` thì sẽ không show AOA khi user trở lại app cho đến khi đặt lại `StatusAds.isShowAoaOnScreen = true`
 
+`isSmall`: Dùng cho load Native ads, `isSmall = true` -> load Native Small, `isSmall = false` -> load Native Large
+
 ### 1. Khởi tạo SDK trong AppDelegate
 ```ruby
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -105,28 +107,32 @@ pod 'PandaAdsLib'
 #### Request Ads: Ví dụ Inter Splash
 ```ruby
     private func requestAds(){
-        // set time interval between interstitial
+        // set khoảng thời gian tối thiểu giữa 2 lần show interstitial bất kỳ, lấy giá trị từ RemoteConfig
         PandaAds.shared.setInterval(Int(RemoteConfigManager.valueNumber(forKey: RemoteConfigManager.interval_between_interstitial)))
         
         loadInter()
         loadAOA()
     }
     private func loadAOA(){
+        // Gọi load AOA 1 lần duy nhất ở Splash
         AppOpenAdManager.shared.configure(idAds: IDS_Constants.AppOpen_resume, canShowAds: true)
         AppOpenAdManager.shared.loadAppOpenAd()
     }
     
     private func loadInter(){
+        // Callback sau khi đóng Inter Splash thì chuyển màn hình
         InterstitialAdSplashAdManager.shared.onAdDismissed = {
             self.navigateToNextScreen()
         }
         
         InterstitialAdSplashAdManager.shared.loadInterAdSplash(adPlacement: "Inter_splash", idInterSplash: IDS_Constants.Inter_splash, canShowAds: true, completion: {interAd, error in
             if interAd == nil{
+                // Load inter fail -> chuyển màn hình
                 DispatchQueue.main.async {
                     self.navigateToNextScreen()
                 }
             }else{
+                // Gọi show inter
                 interAd!.present(fromRootViewController: self)
             }
         })
@@ -185,7 +191,7 @@ extension UIApplication {
         }
         AnalyticEvent.adsLogEvent(.ad_banner_create) // event banner được gọi load lần đầu tiên
         BannerAdManager.shared.loadBannerAd(
-            adPlacement: "Banner_splash",
+            adPlacement: "Banner_all",
             adUnitID: IDS_Constants.Banner_all,
             canShowAds: true,
             containerView: viewAD,
@@ -219,6 +225,7 @@ extension UIApplication {
 ##### Load interstitial, gọi trong ViewDidLoad
 ```ruby
     private func loadInterAd(){
+        // thêm delegate để nhận callback sau khi đóng Interstitial
         InterstitialAdAdManager.shared.addDelegate(self)
         InterstitialAdAdManager.shared.loadInterAd(adPlacement: "Inter_home", idInter: IDS_Constants.Inter_home, interName: "Inter_home", canShowAds: true, completion: {interAd, error in
         })
@@ -238,7 +245,7 @@ class HomeVIewController: UIViewController, InterstitialAdDelegate{
     }
 ```
 ### 6. Rewarded Ads
-##### Load và show Reward
+##### Load và show Reward, Dev có thể thêm dialog loading cho đến khi nhận callback load success hoặc fail, timeout của load reward default = 12s
 ```ruby
     private func loadReward(){
         RewardedAdManager.shared.loadRewardedAd(adPlacement: "Reward_ads", adUnitID: IDS_Constants.Reward_ads, vc: self, onSuccess: {
