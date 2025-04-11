@@ -12,7 +12,7 @@ public class PandaAds: NSObject{
     public var intervalBetweenInterstitial: Int = 20
     
     /// Closure để app truyền custom NativeAdView từ xib
-    public var nativeAdViewProvider: ((_ isSmall: Bool) -> GADNativeAdView?)?
+    public var nativeAdViewProvider: ((_ isSmall: Bool, _ isLightMode: Bool ) -> GADNativeAdView?)?
     
     public func initialize() {
         // Setup Adjust

@@ -55,6 +55,7 @@ class HomeVIewController: UIViewController, InterstitialAdDelegate{
             adUnitID: IDS_Constants.Native_language_2F,
             canShowAds: true,
             isSmall: false,
+            isLightMode: false,
             containerView: viewADNativeLarge,
             viewController: self
         )

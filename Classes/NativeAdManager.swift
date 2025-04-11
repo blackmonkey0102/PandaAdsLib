@@ -13,6 +13,7 @@ public class NativeAdManager: NSObject {
     private var adLoader: GADAdLoader?
     private var containerView: UIView!
     private var isSmall: Bool = false
+    private var isLightMode: Bool = true
     private var adPlacement = ""
     
     public func loadNativeAd(
@@ -20,6 +21,7 @@ public class NativeAdManager: NSObject {
             adUnitID: String,
             canShowAds: Bool,
             isSmall: Bool,
+            isLightMode: Bool = true,
             containerView: UIView,
             viewController: UIViewController
         ) {
@@ -34,6 +36,7 @@ public class NativeAdManager: NSObject {
             self.containerView = containerView
             self.containerView.isHidden = false // Hiển thị container mặc định
             self.isSmall = isSmall
+            self.isLightMode = isLightMode
 
             adLoader = GADAdLoader(
                 adUnitID: adUnitID,
@@ -53,7 +56,7 @@ public class NativeAdManager: NSObject {
             AnalyticEvent.adsLogEvent(.ad_native_call_show)
             
             let nativeAdView: GADNativeAdView
-            if let customView = PandaAds.shared.nativeAdViewProvider?(isSmall) {
+            if let customView = PandaAds.shared.nativeAdViewProvider?(isSmall, isLightMode) {
                 nativeAdView = customView
             } else {
                 let nibName = isSmall ? "UnifiedNativeAdViewSmall" : "UnifiedNativeAdView"

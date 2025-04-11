@@ -21,8 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pandaAds.initialize()
         
         //MyUnifiedNativeAdViewSmall, MyUnifiedNativeAdView là 2 file xib chứa layout của native ads large và small, Lấy nó ở trong thư mục Example
-        PandaAds.shared.nativeAdViewProvider = { isSmall in
-            let nibName = isSmall ? "MyUnifiedNativeAdViewSmall" : "MyUnifiedNativeAdView"
+      
+        
+        PandaAds.shared.nativeAdViewProvider = { isSmall, isLightMode in
+            let nibName = isSmall
+                ? (isLightMode ? "MyUnifiedNativeAdViewSmall" : "MyUnifiedNativeAdViewSmallDarkMode")
+                : (isLightMode ? "MyUnifiedNativeAdView" : "MyUnifiedNativeAdViewDarkMode")
+
             return Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)?.first as? GADNativeAdView
         }
         

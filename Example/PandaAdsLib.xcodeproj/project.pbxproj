@@ -14,6 +14,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		BA0891362DA8F9E9006BCF90 /* MyUnifiedNativeAdViewDarkMode.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA0891352DA8F9E9006BCF90 /* MyUnifiedNativeAdViewDarkMode.xib */; };
+		BA0891382DA8F9F9006BCF90 /* MyUnifiedNativeAdViewSmallDarkMode.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA0891372DA8F9F9006BCF90 /* MyUnifiedNativeAdViewSmallDarkMode.xib */; };
 		BAABB2F52DA6056900D60886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAABB2F42DA6056800D60886 /* SceneDelegate.swift */; };
 		BAD95C2B2DA5765000406234 /* IDS_Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD95C2A2DA5764500406234 /* IDS_Constants.swift */; };
 		BAD95C342DA57E6900406234 /* RemoteConfigDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = BAD95C332DA57E6900406234 /* RemoteConfigDefault.plist */; };
@@ -51,6 +53,8 @@
 		607FACE51AFB9204008FA782 /* PandaAdsLib_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PandaAdsLib_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		BA0891352DA8F9E9006BCF90 /* MyUnifiedNativeAdViewDarkMode.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyUnifiedNativeAdViewDarkMode.xib; sourceTree = "<group>"; };
+		BA0891372DA8F9F9006BCF90 /* MyUnifiedNativeAdViewSmallDarkMode.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyUnifiedNativeAdViewSmallDarkMode.xib; sourceTree = "<group>"; };
 		BAABB2F42DA6056800D60886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BAD95C2A2DA5764500406234 /* IDS_Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDS_Constants.swift; sourceTree = "<group>"; };
 		BAD95C332DA57E6900406234 /* RemoteConfigDefault.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefault.plist; sourceTree = "<group>"; };
@@ -138,7 +142,9 @@
 				607FACD71AFB9204008FA782 /* HomeVIewController.swift */,
 				BAE325042DA7D8A5002EAB90 /* SplashViewController.swift */,
 				BAE325002DA7BDA1002EAB90 /* MyUnifiedNativeAdView.xib */,
+				BA0891352DA8F9E9006BCF90 /* MyUnifiedNativeAdViewDarkMode.xib */,
 				BAE325012DA7BDA1002EAB90 /* MyUnifiedNativeAdViewSmall.xib */,
+				BA0891372DA8F9F9006BCF90 /* MyUnifiedNativeAdViewSmallDarkMode.xib */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -280,6 +286,8 @@
 				BAD95C382DA584F300406234 /* GoogleService-Info.plist in Resources */,
 				BAD95C342DA57E6900406234 /* RemoteConfigDefault.plist in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				BA0891362DA8F9E9006BCF90 /* MyUnifiedNativeAdViewDarkMode.xib in Resources */,
+				BA0891382DA8F9F9006BCF90 /* MyUnifiedNativeAdViewSmallDarkMode.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
