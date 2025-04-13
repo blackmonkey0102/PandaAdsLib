@@ -40,13 +40,13 @@ pod 'PandaAdsLib'
 ```
 ## Sử dụng thư viện
 ##### Các param thường sử dụng khi load ads
-`adPlacement`: Tên của id ads, ví dụ Inter_Splash = "ca-app-pub-3940256099942544/4411468910" thì giá trị của `adPlacement` là `Inter_Splash`
+`adPlacement`: Tên của id ads, ví dụ **Inter_Splash = "ca-app-pub-3940256099942544/4411468910"** thì giá trị của **adPlacement** là **Inter_Splash**
 
-`canShowAds`: cho phép load ads hay không, thường kết hợp giữa RemoteConfig vị trí ads và RemoveAds khi mua Inapp Purchase. Ví dụ `canShowAds: RemoteConfigManager.valueBoolean(forKey: RemoteConfigManager.Inter_splash) && !MySettings.isRemoveAds()`
+`canShowAds`: cho phép load ads hay không, thường kết hợp giữa RemoteConfig vị trí ads và RemoveAds khi mua Inapp Purchase. Ví dụ **canShowAds: RemoteConfigManager.valueBoolean(forKey: RemoteConfigManager.Inter_splash) && !MySettings.isRemoveAds()**
 
-`StatusAds.isShowAoaOnScreen`: Cho phép show AppOpen Ads hay không. Ví dụ `StatusAds.isShowAoaOnScreen = false` thì sẽ không show AOA khi user trở lại app cho đến khi đặt lại `StatusAds.isShowAoaOnScreen = true`
+`StatusAds.isShowAoaOnScreen`: Cho phép show AppOpen Ads hay không. Ví dụ **StatusAds.isShowAoaOnScreen = false** thì sẽ không show AOA khi user trở lại app cho đến khi đặt lại **StatusAds.isShowAoaOnScreen = true**
 
-`isSmall`: Dùng cho load Native ads, `isSmall = true` -> load Native Small, `isSmall = false` -> load Native Large
+`isSmall`: Dùng cho load Native ads, **isSmall = true** -> load Native Small, **isSmall = false** -> load Native Large
 
 ### 1. Khởi tạo SDK trong AppDelegate
 ```ruby
