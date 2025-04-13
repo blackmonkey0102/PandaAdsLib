@@ -22,11 +22,11 @@ public class RewardedAdManager: NSObject {
         self.onAdLoadSuccess = onSuccess
         self.onAdLoadFail = onFail
 
-        AnalyticEvent.adsLogEvent(.ad_reward_call_load)
+        AnalyticEventManager.adsLogEvent(.ad_reward_call_load)
         
         var isTimeout = false
         
-        AnalyticEvent.adsLogEvent(.ad_reward_request)
+        AnalyticEventManager.adsLogEvent(.ad_reward_request)
         GADRewardedAd.load(withAdUnitID: adUnitID, request: GADRequest()) { [weak self] ad, error in
             guard let self = self else { return }
             
@@ -39,7 +39,7 @@ public class RewardedAdManager: NSObject {
             if let error = error {
                 MyHelpers.myLog(text: "Failed to load rewarded ad: \(error.localizedDescription)")
                 self.onAdLoadFail?(error)
-                AnalyticEvent.adsLogEvent(.ad_reward_load_failed)
+                AnalyticEventManager.adsLogEvent(.ad_reward_load_failed)
                 return
             }
             
@@ -47,7 +47,7 @@ public class RewardedAdManager: NSObject {
                 let responseInfo = ad?.responseInfo
                 let adNetworkName = responseInfo?.adNetworkClassName
                 // Log analytic với ad_source
-                AnalyticEvent.adsLogEvent(.ad_reward_paid, parameters: [
+                AnalyticEventManager.adsLogEvent(.ad_reward_paid, parameters: [
                     "ad_placement": adPlacement,
                     "ad_platform": "Admob",
                     "ad_unit_name": adUnitID,
@@ -61,14 +61,14 @@ public class RewardedAdManager: NSObject {
                 adRevenue?.setAdRevenueNetwork(responseInfo?.adNetworkClassName ?? "unknown")
                 Adjust.trackAdRevenue(adRevenue!)
                 
-                AnalyticEvent.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
+                AnalyticEventManager.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
             }
 
             MyHelpers.myLog(text: "Rewarded ad loaded successfully")
             self.rewardedAd = ad
             self.rewardedAd?.fullScreenContentDelegate = self
             self.onAdLoadSuccess?()
-            AnalyticEvent.adsLogEvent(.ad_reward_loaded)
+            AnalyticEventManager.adsLogEvent(.ad_reward_loaded)
         }
         
        
@@ -79,7 +79,7 @@ public class RewardedAdManager: NSObject {
         onRewardEarned: (() -> Void)? = nil,
         onClosed: (() -> Void)? = nil
     ) {
-        AnalyticEvent.adsLogEvent(.ad_reward_call_show)
+        AnalyticEventManager.adsLogEvent(.ad_reward_call_show)
         guard let rewardedAd = rewardedAd else {
             MyHelpers.myLog(text: "Rewarded ad is not ready to show")
             return
@@ -116,7 +116,7 @@ public class RewardedAdManager: NSObject {
 extension RewardedAdManager: GADFullScreenContentDelegate {
     public func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         MyHelpers.myLog(text: "Failed to present rewarded ad: \(error.localizedDescription)")
-        AnalyticEvent.adsLogEvent(.ad_reward_show_failed)
+        AnalyticEventManager.adsLogEvent(.ad_reward_show_failed)
     }
 
     public func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
@@ -125,19 +125,19 @@ extension RewardedAdManager: GADFullScreenContentDelegate {
         //loadRewardedAd(adUnitID: adUnitID) // Reload the ad after it’s closed
         onAdClosed?()
         StatusAds.isShowingInter = false
-        AnalyticEvent.adsLogEvent(.ad_reward_closed)
+        AnalyticEventManager.adsLogEvent(.ad_reward_closed)
     }
 
     public func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
         MyHelpers.myLog(text: "Rewarded ad recorded impression")
         StatusAds.isShowingInter = true
-        AnalyticEvent.adsLogEvent(.ad_reward_open)
-        AnalyticEvent.logEventAdImpressionAdjust()
+        AnalyticEventManager.adsLogEvent(.ad_reward_open)
+        AnalyticEventManager.logEventAdImpressionAdjust()
     }
 
     public func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
         MyHelpers.myLog(text: "Rewarded ad recorded click")
-        AnalyticEvent.adsLogEvent(.ad_reward_clicked)
+        AnalyticEventManager.adsLogEvent(.ad_reward_clicked)
     }
     
     

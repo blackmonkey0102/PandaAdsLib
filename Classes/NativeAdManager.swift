@@ -26,7 +26,7 @@ public class NativeAdManager: NSObject {
             viewController: UIViewController
         ) {
             self.adPlacement = adPlacement
-            AnalyticEvent.adsLogEvent(.ad_native_call_load)
+            AnalyticEventManager.adsLogEvent(.ad_native_call_load)
             if !canShowAds{
                 MyHelpers.myLog(text: "Native config false, of remove ads")
                 containerView.isHidden = true
@@ -47,13 +47,13 @@ public class NativeAdManager: NSObject {
 
             adLoader?.delegate = self
             adLoader?.load(GADRequest())
-            AnalyticEvent.adsLogEvent(.ad_native_request)
+            AnalyticEventManager.adsLogEvent(.ad_native_request)
         }
 
         private func configureNativeAdView(_ nativeAd: GADNativeAd) -> GADNativeAdView {
             // Tạo và cấu hình NativeAdView từ nib (hoặc bằng code nếu không có nib)
            
-            AnalyticEvent.adsLogEvent(.ad_native_call_show)
+            AnalyticEventManager.adsLogEvent(.ad_native_call_show)
             
             let nativeAdView: GADNativeAdView
             if let customView = PandaAds.shared.nativeAdViewProvider?(isSmall, isLightMode) {
@@ -117,7 +117,7 @@ public class NativeAdManager: NSObject {
             nativeAd.paidEventHandler = {value in
                 let responseInfo = nativeAd.responseInfo
                 let adNetworkName = responseInfo.adNetworkClassName
-                AnalyticEvent.adsLogEvent(.ad_native_paid, parameters: [
+                AnalyticEventManager.adsLogEvent(.ad_native_paid, parameters: [
                     "ad_placement": self.adPlacement,
                     "ad_platform": "Admob",
                     "ad_unit_name": "\(adLoader.adUnitID ?? "Unknown ID")",
@@ -131,10 +131,10 @@ public class NativeAdManager: NSObject {
                 adRevenue?.setAdRevenueNetwork(responseInfo.adNetworkClassName ?? "unknown")
                 Adjust.trackAdRevenue(adRevenue!)
                 
-                AnalyticEvent.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
+                AnalyticEventManager.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
             }
             
-            AnalyticEvent.adsLogEvent(.ad_native_loaded)
+            AnalyticEventManager.adsLogEvent(.ad_native_loaded)
             
             // Xóa subviews cũ
             containerView.subviews.forEach { $0.removeFromSuperview() }
@@ -158,7 +158,7 @@ public class NativeAdManager: NSObject {
         public func adLoader(_ adLoader: GADAdLoader, didFailToReceiveAdWithError error: Error) {
             MyHelpers.myLog(text: "Native ad failed to load: \(error.localizedDescription)")
             
-            AnalyticEvent.adsLogEvent(.ad_native_load_failed)
+            AnalyticEventManager.adsLogEvent(.ad_native_load_failed)
             
             containerView.isHidden = true
             onNativeAdLoadFail?(error, adPlacement)
@@ -168,13 +168,13 @@ public class NativeAdManager: NSObject {
     extension NativeAdManager: GADNativeAdDelegate {
         public func nativeAdDidRecordImpression(_ nativeAd: GADNativeAd) {
             MyHelpers.myLog(text: "Native ad did record impression")
-            AnalyticEvent.adsLogEvent(.ad_native_open)
-            AnalyticEvent.logEventAdImpressionAdjust()
+            AnalyticEventManager.adsLogEvent(.ad_native_open)
+            AnalyticEventManager.logEventAdImpressionAdjust()
         }
 
         public func nativeAdDidRecordClick(_ nativeAd: GADNativeAd) {
             MyHelpers.myLog(text: "Native ad did record click")
-            AnalyticEvent.adsLogEvent(.ad_native_clicked)
+            AnalyticEventManager.adsLogEvent(.ad_native_clicked)
         }
 
 

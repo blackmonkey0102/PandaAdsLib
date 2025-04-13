@@ -191,7 +191,7 @@ extension UIApplication {
         BannerAdManager.shared.onBannerAdLoadFail = { error in
             print("Banner failed to load: \(error.localizedDescription)")
         }
-        AnalyticEvent.adsLogEvent(.ad_banner_create) // event banner được gọi load lần đầu tiên
+        AnalyticEventManager.adsLogEvent(.ad_banner_create) // event banner được gọi load lần đầu tiên
         BannerAdManager.shared.loadBannerAd(
             adPlacement: "Banner_all",
             adUnitID: IDS_Constants.Banner_all,

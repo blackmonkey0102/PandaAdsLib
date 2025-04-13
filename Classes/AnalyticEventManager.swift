@@ -2,7 +2,7 @@ import FirebaseAnalytics
 import Foundation
 import Adjust
 
-public class AnalyticEvent {
+public class AnalyticEventManager {
     
     public static func logEventAdImpressionAdjust(){
         guard let event = ADJEvent(eventToken: PandaAds.shared.adjustAdImpression) else { return }

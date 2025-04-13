@@ -29,7 +29,7 @@ public class InterstitialAdAdManager: NSObject, GADFullScreenContentDelegate{
     /// Load interstitial ad with a completion callback
     public func loadInterAd(adPlacement:String, idInter: String, interName: String, canShowAds: Bool, completion: @escaping (GADInterstitialAd?, Error?) -> Void) {
         self.adPlacement = adPlacement
-        AnalyticEvent.adsLogEvent(.ad_inter_call_load)
+        AnalyticEventManager.adsLogEvent(.ad_inter_call_load)
         
         if let existingAd = interstitialAds[interName] {
             MyHelpers.myLog(text: "Interstitial ad for ID \(interName) already loaded")
@@ -43,23 +43,23 @@ public class InterstitialAdAdManager: NSObject, GADFullScreenContentDelegate{
             return
         }
         
-        AnalyticEvent.adsLogEvent(.ad_inter_request)
+        AnalyticEventManager.adsLogEvent(.ad_inter_request)
         let request = GADRequest()
         GADInterstitialAd.load(withAdUnitID: idInter, request: request) { [weak self] interAd, error in
 
             if let error = error {
                 MyHelpers.myLog(text: "Load inter failed: \(error.localizedDescription)")
-                AnalyticEvent.adsLogEvent(.ad_inter_load_failed)
+                AnalyticEventManager.adsLogEvent(.ad_inter_load_failed)
                 
                 completion(nil, error)
             } else if let interAd = interAd {
-                AnalyticEvent.adsLogEvent(.ad_inter_loaded)
+                AnalyticEventManager.adsLogEvent(.ad_inter_loaded)
                 
                 interAd.paidEventHandler = {value in
                     let responseInfo = interAd.responseInfo
                     let adNetworkName = responseInfo.adNetworkClassName
                     // Log analytic với ad_source
-                    AnalyticEvent.adsLogEvent(.ad_inter_paid, parameters: [
+                    AnalyticEventManager.adsLogEvent(.ad_inter_paid, parameters: [
                         "ad_placement": adPlacement,
                         "ad_platform": "Admob",
                         "ad_unit_name": idInter,
@@ -73,7 +73,7 @@ public class InterstitialAdAdManager: NSObject, GADFullScreenContentDelegate{
                     adRevenue?.setAdRevenueNetwork(responseInfo.adNetworkClassName ?? "unknown")
                     Adjust.trackAdRevenue(adRevenue!)
                     
-                    AnalyticEvent.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
+                    AnalyticEventManager.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
                 }
                 
                 MyHelpers.myLog(text: "Interstitial loaded successfully")
@@ -92,7 +92,7 @@ public class InterstitialAdAdManager: NSObject, GADFullScreenContentDelegate{
             return
         }
         if MySettings.isShowAdsAfter30Seconds() && canShowAds{
-            AnalyticEvent.adsLogEvent(.ad_inter_call_show)
+            AnalyticEventManager.adsLogEvent(.ad_inter_call_show)
             interstitialAd.present(fromRootViewController: viewController)
         }else{
             notifyAdDismissed()
@@ -102,23 +102,23 @@ public class InterstitialAdAdManager: NSObject, GADFullScreenContentDelegate{
     public func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         MyHelpers.myLog(text: "Interstitial failed to present full screen content: \(error.localizedDescription)")
         notifyAdDismissed()
-        AnalyticEvent.adsLogEvent(.ad_inter_show_failed)
+        AnalyticEventManager.adsLogEvent(.ad_inter_show_failed)
     }
     
     public func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
         MyHelpers.myLog(text: "Interstitial adDidRecordImpression")
         StatusAds.isShowingInter = true
-        AnalyticEvent.adsLogEvent(.ad_inter_open)
-        AnalyticEvent.logEventAdImpressionAdjust()
+        AnalyticEventManager.adsLogEvent(.ad_inter_open)
+        AnalyticEventManager.logEventAdImpressionAdjust()
     }
     
     public func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
-        AnalyticEvent.adsLogEvent(.ad_inter_clicked)
+        AnalyticEventManager.adsLogEvent(.ad_inter_clicked)
     }
     
     public func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         MyHelpers.myLog(text: "Interstitial did dismiss full screen content")
-        AnalyticEvent.adsLogEvent(.ad_inter_closed)
+        AnalyticEventManager.adsLogEvent(.ad_inter_closed)
         
         StatusAds.isShowingInter = false
         

@@ -83,7 +83,7 @@ class HomeVIewController: UIViewController, InterstitialAdDelegate{
         BannerAdManager.shared.onBannerAdLoadFail = { error in
             print("Banner failed to load: \(error.localizedDescription)")
         }
-        AnalyticEvent.adsLogEvent(.ad_banner_create)
+        AnalyticEventManager.adsLogEvent(.ad_banner_create)
         BannerAdManager.shared.loadBannerAd(
             adPlacement: "Banner_splash",
             adUnitID: IDS_Constants.Banner_all,

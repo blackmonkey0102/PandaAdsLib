@@ -20,15 +20,15 @@ public class AppOpenAdManager: NSObject {
     }
 
     public func loadAppOpenAd() {
-            AnalyticEvent.adsLogEvent(.ad_open_call_load)
+        AnalyticEventManager.adsLogEvent(.ad_open_call_load)
             // Kiểm tra nếu quảng cáo đã tồn tại hoặc đang hiển thị
         if appOpenAd != nil || isAdShowing || !canShowAds{ return }
            
-            AnalyticEvent.adsLogEvent(.ad_open_request)
+            AnalyticEventManager.adsLogEvent(.ad_open_request)
         GADAppOpenAd.load(withAdUnitID: idAds, request: GADRequest(), orientation: .portrait) { [weak self] ad, error in
                 if let error = error {
                     MyHelpers.myLog(text: "Failed to load AppOpen ad: \(error.localizedDescription)")
-                    AnalyticEvent.adsLogEvent(.ad_open_load_failed)
+                    AnalyticEventManager.adsLogEvent(.ad_open_load_failed)
                     return
                 }
 
@@ -36,13 +36,13 @@ public class AppOpenAdManager: NSObject {
                 self?.lastLoadTime = Date()
                 self?.appOpenAd?.fullScreenContentDelegate = self
 
-                AnalyticEvent.adsLogEvent(.ad_open_loaded)
+                AnalyticEventManager.adsLogEvent(.ad_open_loaded)
                 MyHelpers.myLog(text: "AppOpen ad loaded successfully.")
                 
                 self?.appOpenAd?.paidEventHandler = { value in
                     let responseInfo = self?.appOpenAd?.responseInfo
                     let adNetworkName = responseInfo?.adNetworkClassName
-                    AnalyticEvent.adsLogEvent(.ad_open_paid, parameters: [
+                    AnalyticEventManager.adsLogEvent(.ad_open_paid, parameters: [
                         "ad_placement": "AppOpen_resume",
                         "ad_platform": "Admob",
                         "ad_unit_name": "\(self?.idAds)",
@@ -56,7 +56,7 @@ public class AppOpenAdManager: NSObject {
                     adRevenue?.setAdRevenueNetwork(responseInfo?.adNetworkClassName ?? "unknown")
                     Adjust.trackAdRevenue(adRevenue!)
                     
-                    AnalyticEvent.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
+                    AnalyticEventManager.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
                 }
             }
         }
@@ -94,7 +94,7 @@ public class AppOpenAdManager: NSObject {
 
             isAdShowing = true
             appOpenAd.present(fromRootViewController: viewController)
-            AnalyticEvent.adsLogEvent(.ad_open_call_show)
+            AnalyticEventManager.adsLogEvent(.ad_open_call_show)
         }
 
         public func handleAppDidBecomeActive() {
@@ -116,17 +116,17 @@ public class AppOpenAdManager: NSObject {
             appOpenAd = nil
             isAdShowing = false
             loadAppOpenAd()
-            AnalyticEvent.adsLogEvent(.ad_open_closed)
+            AnalyticEventManager.adsLogEvent(.ad_open_closed)
         }
 
         public func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
             MyHelpers.myLog(text: "AppOpen Ad adDidRecordImpression.")
-            AnalyticEvent.adsLogEvent(.ad_open_open)
-            AnalyticEvent.logEventAdImpressionAdjust()
+            AnalyticEventManager.adsLogEvent(.ad_open_open)
+            AnalyticEventManager.logEventAdImpressionAdjust()
         }
         
         public func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
-            AnalyticEvent.adsLogEvent(.ad_open_clicked)
+            AnalyticEventManager.adsLogEvent(.ad_open_clicked)
         }
 
         public func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
@@ -135,7 +135,7 @@ public class AppOpenAdManager: NSObject {
             isAdShowing = false
             loadAppOpenAd()
             
-            AnalyticEvent.adsLogEvent(.ad_open_show_failed)
+            AnalyticEventManager.adsLogEvent(.ad_open_show_failed)
         }
     }
 

@@ -77,7 +77,7 @@ public class BannerAdManager: NSObject {
                 bannerView.load(GADRequest())
                 stateLoadBanner = .LOADING
                 
-                AnalyticEvent.adsLogEvent(.ad_banner_load)
+                AnalyticEventManager.adsLogEvent(.ad_banner_load)
             }
 
         }
@@ -86,12 +86,12 @@ public class BannerAdManager: NSObject {
     extension BannerAdManager: GADBannerViewDelegate {
         public func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
             MyHelpers.myLog(text: "Banner did receive ad: \(bannerView.adUnitID ?? "Unknown ID")")
-            AnalyticEvent.adsLogEvent(.ad_banner_loaded)
+            AnalyticEventManager.adsLogEvent(.ad_banner_loaded)
             
             bannerView.paidEventHandler = {value in
                 let responseInfo = bannerView.responseInfo
                 let adNetworkName = responseInfo?.adNetworkClassName
-                AnalyticEvent.adsLogEvent(.ad_banner_paid, parameters: [
+                AnalyticEventManager.adsLogEvent(.ad_banner_paid, parameters: [
                     "ad_placement": self.adPlacement,
                     "ad_platform": "Admob",
                     "ad_unit_name": "\(bannerView.adUnitID ?? "Unknown ID")",
@@ -105,7 +105,7 @@ public class BannerAdManager: NSObject {
                 adRevenue?.setAdRevenueNetwork(responseInfo?.adNetworkClassName ?? "unknown")
                 Adjust.trackAdRevenue(adRevenue!)
                 
-                AnalyticEvent.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
+                AnalyticEventManager.logEventPurchaseAdjust(amount: Double(value.value), currency: value.currencyCode)
             }
             
             // Gắn banner view vào container
@@ -133,7 +133,7 @@ public class BannerAdManager: NSObject {
         
         public func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
             MyHelpers.myLog(text: "Banner failed to load: \(error.localizedDescription)")
-            AnalyticEvent.adsLogEvent(.ad_banner_load_failed)
+            AnalyticEventManager.adsLogEvent(.ad_banner_load_failed)
             
             stateLoadBanner = .FAIL
             onBannerAdLoadFail?(error)
@@ -149,7 +149,7 @@ public class BannerAdManager: NSObject {
         }
         
         public func bannerViewDidRecordClick(_ bannerView: GADBannerView) {
-            AnalyticEvent.adsLogEvent(.ad_banner_clicked)
+            AnalyticEventManager.adsLogEvent(.ad_banner_clicked)
         }
         
         public func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
