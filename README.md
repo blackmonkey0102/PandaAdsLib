@@ -227,9 +227,11 @@ extension UIApplication {
 ### 5. Interstitial Ads
 ##### Load interstitial, gọi trong ViewDidLoad
 ```ruby
+ var tempDelegate: InterstitialAdDelegate?
     private func loadInterAd(){
+        tempDelegate = self
         // thêm delegate để nhận callback sau khi đóng Interstitial
-        InterstitialAdAdManager.shared.addDelegate(self)
+        InterstitialAdAdManager.shared.addDelegate(self, forKey: "Inter_home")
         InterstitialAdAdManager.shared.loadInterAd(adPlacement: "Inter_home", idInter: IDS_Constants.Inter_home, interName: "Inter_home", canShowAds: true, completion: {interAd, error in
         })
     }
