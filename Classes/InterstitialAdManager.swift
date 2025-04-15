@@ -13,17 +13,32 @@ public class InterstitialAdAdManager: NSObject, GADFullScreenContentDelegate{
     public var delegates = NSHashTable<AnyObject>.weakObjects()
     public var interstitialAds: [String: GADInterstitialAd] = [:]
     
+    public var delegateMap: [String: WeakWrapper] = [:]
+
+    public class WeakWrapper {
+        weak var value: AnyObject?
+        init(_ value: AnyObject) {
+            self.value = value
+        }
+    }
+    
     private var adPlacement = ""
     
     
     // Thêm delegate
-    public func addDelegate(_ delegate: InterstitialAdDelegate) {
+    public func addDelegate(_ delegate: InterstitialAdDelegate, forKey key: String) {
         delegates.add(delegate)
+        delegateMap[key] = WeakWrapper(delegate)
+        MyHelpers.myLog(text: "✅ addDelegate \(key)")
     }
     
     // Xóa delegate
     public func removeDelegate(_ delegate: InterstitialAdDelegate) {
         delegates.remove(delegate)
+        // Tìm key tương ứng trong delegateMap và remove
+        if let keyToRemove = delegateMap.first(where: { $0.value.value === delegate })?.key {
+            delegateMap.removeValue(forKey: keyToRemove)
+        }
     }
     
     /// Load interstitial ad with a completion callback
@@ -88,14 +103,14 @@ public class InterstitialAdAdManager: NSObject, GADFullScreenContentDelegate{
     public func presentAd(idInter: String, interName: String, canShowAds: Bool, from viewController: UIViewController) {
         guard let interstitialAd = interstitialAds[interName] else {
             MyHelpers.myLog(text: "No interstitial available for ID \(interName)")
-            notifyAdDismissed()
+            notifyAdDismissed(key: interName)
             return
         }
         if MySettings.isShowAdsAfter30Seconds() && canShowAds{
             AnalyticEventManager.adsLogEvent(.ad_inter_call_show)
             interstitialAd.present(fromRootViewController: viewController)
         }else{
-            notifyAdDismissed()
+            notifyAdDismissed(key: interName)
         }
     }
     
@@ -124,6 +139,8 @@ public class InterstitialAdAdManager: NSObject, GADFullScreenContentDelegate{
         
         // Xóa quảng cáo khỏi từ điển sau khi đã hiển thị
         if let (key, value) = interstitialAds.first(where: { $0.value === ad }) {
+            notifyAdDismissed(key: key)
+            
             interstitialAds.removeValue(forKey: key)
             MyHelpers.myLog(text: "Removed interstitial ad for ID \(key) \(value.adUnitID)")
             
@@ -141,13 +158,22 @@ public class InterstitialAdAdManager: NSObject, GADFullScreenContentDelegate{
         }
         
         MySettings.setShowAdsAfter30Seconds()
-        notifyAdDismissed()
+        
+        
+        
     }
     
     // Gửi thông báo đến tất cả delegate
-    public func notifyAdDismissed() {
-        for delegate in delegates.allObjects {
-            (delegate as? InterstitialAdDelegate)?.onAdDismissed()
+    public func notifyAdDismissed(key: String = "") {
+        if key != ""{
+            if let wrapper = delegateMap[key], let delegate = wrapper.value as? InterstitialAdDelegate {
+                delegate.onAdDismissed()
+            }
+        }else{
+            MyHelpers.myLog(text: "notifyAdDismissed 3 : \(key)")
+            for delegate in delegates.allObjects {
+                (delegate as? InterstitialAdDelegate)?.onAdDismissed()
+            }
         }
     }
 }

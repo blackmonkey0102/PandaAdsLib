@@ -34,8 +34,10 @@ class HomeVIewController: UIViewController, InterstitialAdDelegate{
         }
     }
     
+    var tempDelegate: InterstitialAdDelegate?
     private func loadInterAd(){
-        InterstitialAdAdManager.shared.addDelegate(self)
+        tempDelegate = self
+        InterstitialAdAdManager.shared.addDelegate(self, forKey: "Inter_home")
         InterstitialAdAdManager.shared.loadInterAd(adPlacement: "Inter_home", idInter: IDS_Constants.Inter_home, interName: "Inter_home", canShowAds: true, completion: {interAd, error in
         })
     }

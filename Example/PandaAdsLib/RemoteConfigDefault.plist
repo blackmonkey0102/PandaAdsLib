@@ -13,7 +13,7 @@
 	<key>in_app_purchase_lifetime</key>
 	<true/>
 	<key>interval_between_interstitial</key>
-	<integer>25</integer>
+	<integer>5</integer>
 	<key>Inter_splash</key>
 	<true/>
 	<key>AppOpen_resume</key>
